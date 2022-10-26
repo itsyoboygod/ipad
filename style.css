@@ -1,0 +1,243 @@
+:root{
+    --white: #ffffff;
+    --blue: #1e90ff;
+    --darkblue: #00008b;
+    --purple: #9932cc;
+    --gray: gray;
+    --darker-blue: #1e1e1e;
+    --black: black;
+    --random-color: --random-color;
+    --darkgrey: #131313;
+    --red: hsl(0, 100%, 50%);
+    --tomato: hsl(9, 100%, 64%);
+    --notifi-1: "3"
+}
+
+html{
+    background-color: white;
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+
+
+@keyframes background-pan2{
+    from{
+        background-position: 0% top;
+    }
+    
+    to{
+        background-position: 500% bottom;
+    }
+
+}
+
+.purple-sunset{
+    animation: background-pan2 100s linear infinite;
+    background-image: radial-gradient( 
+        circle,
+            var(--purple) 5%,
+            var(--darkblue) 35%,
+            var(--black) 60%
+
+    );
+    background-size: 500%;
+    overflow: hidden;
+    margin: 0;
+    position: relative;
+    padding: 0;
+}
+
+.wave-bkg{
+    background-image: url('./bckg_top.svg'),url('./bckg_bottom.svg');
+    background-position: top right, bottom left; 
+    background-repeat:no-repeat; 
+    /* background-blend-mode: screen; */
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel{
+    display: flex;
+    flex-direction: row;
+    scroll-snap-type: x proximity;
+    overflow-x: scroll;
+    justify-content: flex-start;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: transparent;    
+    padding: 0;
+    scroll-snap-align: center;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+/* ---------------------------------------APPS--------------------------------------- */
+
+.apps-wrapper{
+    display: flex;
+    align-self: center;
+    scroll-snap-align: center;
+}
+
+.apps-grid{
+    display: grid;
+    gap: 1rem   ;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+}
+
+.app{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.app img{
+    width: 50px;
+}
+
+.apps-grid>*:before{
+    content: var(--notifi-1);
+    position: absolute;
+    top: -0.8em;
+    right: -0.5em;
+    width: 0.4em;
+    height: 0.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    backdrop-filter: blur(2px);
+    background-color: var(--red);
+    color: var(--white) !important;
+    font-family: sans-serif;
+    font-size: .8rem;
+    padding: 8px;
+    font-weight: bolder;
+    }
+
+
+
+
+/* ---------------------------------------WIDGET--------------------------------------- */
+
+.widget-wrapper{
+    width: fit-content;
+    align-self: center;
+    scroll-snap-align: center;
+
+    }
+
+.widget-grid{
+    display: grid;
+    gap: 1rem   ;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+}
+
+.grid-col-span-1{   
+    grid-column: span 1;
+}
+
+.grid-col-span-2{   
+    grid-column: span 2;
+}
+
+.grid-col-span-3{   
+    grid-column: span 3;
+}
+
+.grid-col-span-5{
+    grid-column: span 5;
+}
+
+.bkg-blur{
+    backdrop-filter: blur(2px);
+    background: transparent;
+    background-color: hsla(0,0%,100%,.3);
+    pointer-events: none;
+}
+
+.widget{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    width: -webkit-fill-available;
+}
+
+.weather{
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui;
+    color: var(--white);
+}
+
+.weather-grid{
+    display: grid;
+    gap: 1rem   ;
+    grid-template-columns: repeat(6, 1fr);
+    place-items: center;
+}
+
+.weather-info>*{
+    margin: 2px;
+    padding: 2px;
+}
+
+.weather-week{
+    text-align: center;
+}
+
+.temperature p{
+    font-size: 3rem;
+}
+
+.clock{
+    text-align: center;
+}
+
+.clock img{
+    width: 150px;
+}
+
+.idea{
+    text-align: center;
+}
+
+.idea img{
+    width: 150px;
+}
+/* ---------------------------------------SCROLLBAR--------------------------------------- */
+
+::-webkit-scrollbar-thumb:vertical{
+    background: var(--darker-blue);
+    height: 2rem;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track-piece{
+    background-color: var(--darkgrey);    
+}
+
+::-webkit-scrollbar{
+    height: 5px;
+    width: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
