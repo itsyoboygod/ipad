@@ -95,10 +95,11 @@ section{
 
 .apps-grid{
     display: grid;
-    gap: 1rem   ;
+    gap: 5rem;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, 1fr);
     place-items: center;
+    position: relative;
 }
 
 .app{
@@ -111,7 +112,21 @@ section{
     width: 50px;
 }
 
-.apps-grid>*:before{
+@keyframes notifi_wiggle{
+    0%{
+        transform: rotate(0);
+    }
+    
+    100%{
+        transform: rotate(.01rad);
+    }
+}
+
+.apps-grid>:nth-of-type(odd):before{
+    animation: notifi_wiggle 1s cubic-bezier(.5,150,.5,-150) infinite;
+}
+
+.apps-grid>:nth-of-type(odd):before{
     content: var(--notifi-1);
     position: absolute;
     top: -0.8em;
@@ -129,6 +144,19 @@ section{
     font-size: .8rem;
     padding: 8px;
     font-weight: bolder;
+    }
+
+    .apps-grid>*::after{
+    content: attr(data-app);
+    position: absolute;
+    font-size: 1rem !important;
+    pointer-events: none;
+    font-family: system-ui;
+    width: 100px;
+    color: var(--white);
+    bottom: -25px;
+    left: -20px;
+    text-align: center;
     }
 
 
@@ -187,6 +215,22 @@ section{
     color: var(--white);
 }
 
+@keyframes weather_flip{
+    from{
+        transform: rotateX(0);
+    }
+    
+    to{
+        transform: rotateX(1turn);
+    }
+
+}
+
+.weather-week{
+    animation: weather_flip 10s cubic-bezier(1, 0, 0, 1) infinite;
+    animation-delay: calc(var(--order) * 500ms);
+}
+
 .weather-grid{
     display: grid;
     gap: 1rem   ;
@@ -222,6 +266,63 @@ section{
 .idea img{
     width: 150px;
 }
+
+.block-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+}
+
+.blocks{
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: system-ui;
+}
+
+.block1 img{
+    width: 150px;
+}
+
+@keyframes span_txt{
+    from{
+        transform: translateX(100%);
+        opacity: 0;
+        
+    }
+    
+    to{
+        transform: translateX(0);
+    }
+
+}
+
+.block4{
+    width:  -webkit-fill-available;
+    overflow-x: hidden;
+    font-family: system-ui;
+}
+
+.block4 span{
+    display: flex;
+    animation: span_txt 5s cubic-bezier(.08,1.67,.93,-0.12) infinite;
+    animation-delay: calc(var(--order) * 500ms);
+}
+
+.block4 span img{
+    width: 30px;
+}
+
+.block4 p{
+    margin: 2px;
+    padding: 2px;
+    font-size: 1rem;
+}
+
+
+
 /* ---------------------------------------SCROLLBAR--------------------------------------- */
 
 ::-webkit-scrollbar-thumb:vertical{
