@@ -85,6 +85,11 @@ section{
     min-height: 100vh;
     min-width: 100vw;
 }
+
+img{
+    user-select: none;
+    pointer-events: none;
+}
 /* ---------------------------------------APPS--------------------------------------- */
 
 .apps-wrapper{
@@ -100,16 +105,19 @@ section{
     grid-template-rows: repeat(3, 1fr);
     place-items: center;
     position: relative;
+    animation-delay: calc(var(--order) * 500ms);
 }
 
 .app{
     margin: 5px;
     padding: 5px;
     border-radius: 10px;
-}
-
-.app img{
-    width: 50px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 50px;
+    max-height: 50px;
+    display: flex;
+    filter: drop-shadow(2px 4px 16px black);
 }
 
 @keyframes notifi_wiggle{
@@ -124,6 +132,7 @@ section{
 
 .apps-grid>:nth-of-type(odd):before{
     animation: notifi_wiggle 1s cubic-bezier(.5,150,.5,-150) infinite;
+    /* animation: notifi_wiggle 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); */
 }
 
 .apps-grid>:nth-of-type(odd):before{
@@ -144,6 +153,8 @@ section{
     font-size: .8rem;
     padding: 8px;
     font-weight: bolder;
+    filter: drop-shadow(-2px 2px 5px black);
+    
     }
 
     .apps-grid>*::after{
@@ -201,11 +212,23 @@ section{
     pointer-events: none;
 }
 
+.bkg-img{
+    background-image: url('./imgs/dog.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: hsla(0,0%,100%,.1);
+    object-fit: cover;
+    mix-blend-mode: hard-light;
+
+
+}
+
 .widget{
     margin: 5px;
     padding: 5px;
     border-radius: 10px;
-    width: -webkit-fill-available;
+    filter: drop-shadow(2px 4px 16px black);
 }
 
 .weather{
@@ -213,6 +236,9 @@ section{
     flex-direction: column;
     font-family: system-ui;
     color: var(--white);
+    background-color: lightskyblue;
+    background: linear-gradient(45deg, var(--blue), transparent);
+
 }
 
 @keyframes weather_flip{
@@ -253,6 +279,7 @@ section{
 
 .clock{
     text-align: center;
+    backdrop-filter: grayscale(1);
 }
 
 .clock img{
@@ -261,10 +288,32 @@ section{
 
 .idea{
     text-align: center;
+    height: 300px;
+    width: 200px;
 }
 
-.idea img{
-    width: 150px;
+.idea p{
+    text-align: left;
+    margin: 2px;
+    padding: 2px;
+    font-family: system-ui;
+    font-size: 2rem;
+}
+.idea  p:last-child{
+    font-weight: bolder;
+}
+
+.app-cluster{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+    border-radius: 10px;
+    scale: .8;
+}
+
+.app-bundle img{
+    width: 30px;
 }
 
 .block-wrapper{
@@ -280,11 +329,23 @@ section{
     justify-content: center;
     flex-direction: column;
     font-family: system-ui;
+    color: var(--white);
 }
 
 .block1 img{
     width: 150px;
 }
+
+.block2 {
+    margin: 2px;
+    padding: 2px;
+}
+
+.block2 > * {
+    margin: 2px;
+    padding: 2px;
+}
+
 
 @keyframes span_txt{
     from{
@@ -321,6 +382,10 @@ section{
     font-size: 1rem;
 }
 
+.wealth{
+    backdrop-filter: hue-rotate(300deg);
+    
+}
 
 
 /* ---------------------------------------SCROLLBAR--------------------------------------- */
